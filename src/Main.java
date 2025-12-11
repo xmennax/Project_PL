@@ -46,30 +46,44 @@ public class Main{
         loginBtn.addActionListener(e -> {
             String username = userField.getText();
             String password = new String(passField.getPassword());
-            boolean check = false;
+            boolean found = false;
+
             for(Admin a : admins){
                 if(a.getUsername().equals(username) && a.getPassword().equals(password)){
-                    check = true;
+                    found = true;
                     currentAdmin = a;
-                    frame.dispose();
+                    frame.setVisible(false);
                     showAdminPanel();
                     break;
                 }
             }
-            if(!check){
-                message.setText("Invalid username or password!");
+
+            if(!found){
+                message.setText("Admin not found! Please register first.");
             }
         });
 
         registerBtn.addActionListener(e -> {
             String username = userField.getText();
             String password = new String(passField.getPassword());
-            if(password.length()>=6){
-                admins.add(new Admin(username,password));
-                currentAdmin = admins.get(admins.size()-1);
-                message.setText("Admin registered!");
+
+            boolean exists = false;
+            for(Admin a : admins){
+                if(a.getUsername().equals(username)){
+                    exists = true;
+                    break;
+                }
+            }
+
+            if(exists){
+                message.setText("Admin already exists! Use Login.");
             } else {
-                message.setText("Password must be >= 6 characters!");
+                if(password.length()>=6){
+                    admins.add(new Admin(username,password));
+                    message.setText("Admin registered! You can now login.");
+                } else {
+                    message.setText("Password must be >= 6 characters!");
+                }
             }
         });
 
@@ -94,6 +108,7 @@ public class Main{
         JButton manageEmpBtn = new JButton("Manage Employees");
         manageEmpBtn.setBounds(20,70,430,30);
         frame.add(manageEmpBtn);
+        
 
         changeUserBtn.addActionListener(e -> {
             String oldUser = JOptionPane.showInputDialog(frame,"Enter your current username:");

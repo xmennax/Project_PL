@@ -1,12 +1,9 @@
-import java.util.ArrayList;
-
-public class Admin {
+public class Admin extends User{
     private String username ;
     private String password ;
 
     Admin(String username , String password){
-        this.username = username;
-        this.password = password;
+        super(username , password , "Admin");
     }
     public String getUsername() {
         return username;
@@ -22,5 +19,13 @@ public class Admin {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

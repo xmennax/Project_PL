@@ -1,13 +1,12 @@
-public class Employee {
+public class Employee extends User{
     private int id;
     private String password;
     private String type;
 
     Employee(int id , String password , String type){
-        this.id = id;
-        this.password = password;
-        this.type = type;
+        super(id , password , type);
     }
+
     public int getId() {
         return id;
     }
