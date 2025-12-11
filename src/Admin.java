@@ -1,10 +1,14 @@
-public class Admin extends User{
-    private String username ;
-    private String password ;
+import java.util.ArrayList;
 
-    Admin(String username , String password){
-        super(username , password , "Admin");
+public class Admin extends User {
+    private String username;
+    private String password;
+    protected ArrayList<Employee> employees = new ArrayList<>();
+
+    Admin(String username, String password) {
+        super(username, password, "Admin");
     }
+
     public String getUsername() {
         return username;
     }
@@ -21,6 +25,46 @@ public class Admin extends User{
         this.password = password;
     }
 
+    public void changeCredentials(String newUsername, String newPassword) {
+        this.username = newUsername;
+        this.password = newPassword;
+    }
+
+    public void addEmployee(Employee e) {
+        for (Employee em : employees) {
+            if (em.getId() == id) {
+                return;
+            }
+        }
+        employees.add(e);
+    }
+
+    public void deleteEmployee(int id) {
+        employees.removeIf(emp -> emp.id == id);
+    }
+
+    public void updateEmployee(int id, String newPassword) {
+        for (Employee emp : employees) {
+            if (emp.id == id) {
+                emp.password = newPassword;
+            }
+        }
+    }
+
+    public void listEmployees() {
+        for (Employee emp : employees) {
+            System.out.println(emp);
+        }
+    }
+
+    public Employee searchEmployee(int id) {
+        for (Employee emp : employees) {
+            if (emp.id == id) return emp;
+        }
+        return null;
+    }
+
+
     @Override
     public String toString() {
         return "Admin{" +
@@ -28,4 +72,5 @@ public class Admin extends User{
                 ", password='" + password + '\'' +
                 '}';
     }
+
 }

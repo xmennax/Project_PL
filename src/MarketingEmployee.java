@@ -51,4 +51,11 @@ public class MarketingEmployee extends Employee{
         return reports;
     }
 
+
+    void sendOfferToInventory(Offers offer, InventoryEmployee inventory) {
+        //System.out.println(id + " Employee sent offer to Inventory Management.");
+        inventory.receiveOffer(offer);
+    }
+
+
 }

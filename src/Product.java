@@ -4,7 +4,7 @@ public class Product {
     private static int nextId=1;
     protected int id;
     protected String name;
-    protected static int quantity;
+    protected int quantity;
     protected int price;
     protected LocalDate expiryDate;
 
@@ -58,6 +58,13 @@ public class Product {
 
     public void setExpiryDate(LocalDate expiryDate) {
         this.expiryDate = expiryDate;
+    }
+
+    double applyOffer(Offers offer) {
+        if (offer.status) {
+            return price - (price * offer.discount / 100);
+        }
+        return price;
     }
 
 

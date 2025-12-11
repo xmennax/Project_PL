@@ -44,10 +44,7 @@ public class Seller extends Employee{
 
     public Order makeOrder(int productId, int qty) {
         Product p = Inventory.searchProduct(productId);
-        if (p == null) {
-            return null;
-        }
-        if (p.getQuantity() < qty) {
+        if (p == null||p.getQuantity() < qty) {
             return null;
         }
         for (int i = 0 ; i< productTotal.size() ; i++) {
@@ -58,31 +55,31 @@ public class Seller extends Employee{
         }
         Inventory.lowStock(productId);
         Order order = new Order(p, qty);
+        Inventory.decreaseQuantity(productId,qty);
         orders.add(order);
         return order;
     }
     public void cancelOrder(int orderId) {
-
         for (Order o : orders) {
-
             if (o.getOrderId() == orderId && !o.isCanceled()) {
                 Inventory.increaseQuantity(o.getProduct().getId(), o.getQuantity());
 
                 o.cancel();
-                return;
-            }
-            for (int i = 0 ; i< productTotal.size() ; i++) {
-                if(productTotal.get(i).productId == o.getProduct().getId()){
-                    double total = productTotal.get(i).totalPrice-(o.getProduct().price*o.getProduct().getQuantity());
-                    productTotal.set(i,new ProductTotal(o.getProduct().getId() , o.getProduct().getName() ,  total));
+                for (int i = 0; i < productTotal.size(); i++) {
+
+                    if (productTotal.get(i).productId == o.getProduct().getId()) {
+
+                        double newTotal = productTotal.get(i).totalPrice - (o.getProduct().price * o.getQuantity());
+
+                        productTotal.set(i, new ProductTotal(o.getProduct().getId(), o.getProduct().getName(), newTotal));
+                    }
                 }
+                return;
             }
         }
     }
 
-    public void listOrders() {
-        for (Order o : orders) {
-            System.out.println(o);
-        }
+    public ArrayList<Order> listOrders() {
+        return orders;
     }
 }

@@ -12,7 +12,6 @@ public class Order {
         this.product = product;
         this.quantity = quantity;
         this.totalPrice = product.getPrice() * quantity;
-        Product.quantity-=this.quantity;
     }
 
     public int getOrderId() {

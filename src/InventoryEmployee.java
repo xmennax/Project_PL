@@ -5,7 +5,8 @@ public class InventoryEmployee extends Employee{
     protected int id;
     protected String password;
     protected String type;
-    protected ArrayList<Product> products=new ArrayList<>();
+    protected ArrayList<Offers> offers = new ArrayList<>();
+    protected ArrayList<Product> products = new ArrayList<>();
 
     InventoryEmployee(int id, String password) {
         super(id, password, "Inventory Employee");
@@ -87,4 +88,15 @@ public class InventoryEmployee extends Employee{
             p.setQuantity(p.getQuantity() + amount);
         }
     }
+    public void decreaseQuantity(int id , int amount){
+        Product p = searchProduct(id);
+        if(p != null && p.getQuantity()>amount){
+            p.setQuantity(p.getQuantity() - amount);
+        }
+    }
+    void receiveOffer(Offers offer) {
+        offers.add(offer);
+        // System.out.println("Inventory Management received offer: " + offer.description);
+    }
+
 }

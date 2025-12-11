@@ -1,4 +1,4 @@
-public class ProductTotal {
+ public class ProductTotal {
         protected int productId;
         protected String productName;
         protected double totalPrice;

@@ -16,6 +16,8 @@ public class Offers {
         this.endDate  = endDate;
         this.status = status;
     }
+
+
     public int getProductID() {
         return productID;
     }
@@ -54,6 +56,20 @@ public class Offers {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean isValid() {
+        LocalDate today = LocalDate.now();
+        return status && (today.isEqual(startDate) || today.isAfter(startDate))
+                && (today.isBefore(endDate) || today.isEqual(endDate));
     }
 
     @Override

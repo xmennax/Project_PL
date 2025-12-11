@@ -1,7 +1,7 @@
 public class Employee extends User{
-    private int id;
-    private String password;
-    private String type;
+    protected int id;
+    protected String password;
+    protected String type;
 
     Employee(int id , String password , String type){
         super(id , password , type);
