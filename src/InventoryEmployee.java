@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class InventoryEmployee extends Employee{
+public class InventoryEmployee extends Employee implements Arrays<Product>{
     protected int id;
     protected String password;
     protected String type;
@@ -37,9 +37,6 @@ public class InventoryEmployee extends Employee{
         return type;
     }
 
-    public void addProduct(Product p){
-        products.add(p);
-    }
     public Product searchProduct(int id){
         for (Product p:products){
             if (p.getId() == id){
@@ -99,4 +96,18 @@ public class InventoryEmployee extends Employee{
         // System.out.println("Inventory Management received offer: " + offer.description);
     }
 
+    @Override
+    public void add(Product p) {
+        products.add(p);
+    }
+
+    @Override
+    public void delete(int id) {
+        products.removeIf(e -> e.getId() == (id));
+    }
+
+    @Override
+    public ArrayList<Product> list() {
+        return products;
+    }
 }

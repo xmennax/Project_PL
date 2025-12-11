@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Admin extends User {
+public class Admin extends User implements Arrays<Employee>{
     private String username;
     private String password;
     protected ArrayList<Employee> employees = new ArrayList<>();
@@ -30,7 +30,8 @@ public class Admin extends User {
         this.password = newPassword;
     }
 
-    public void addEmployee(Employee e) {
+    @Override
+    public void add(Employee e) {
         for (Employee em : employees) {
             if (em.getId() == id) {
                 return;
@@ -39,7 +40,14 @@ public class Admin extends User {
         employees.add(e);
     }
 
-    public void deleteEmployee(int id) {
+    @Override
+    public ArrayList<Employee> list() {
+        return employees;
+    }
+
+
+    @Override
+    public void delete(int id) {
         employees.removeIf(emp -> emp.id == id);
     }
 
