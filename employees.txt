@@ -1,0 +1,4 @@
+id,password,type
+1,inv123,Inventory Employee
+2,mark456,Marketing Employee
+3,sell789,Seller

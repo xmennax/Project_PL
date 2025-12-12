@@ -1,0 +1,2 @@
+productId,productName,totalSales
+1001,Milk,40.0

@@ -1,6 +1,6 @@
 public class Order {
 
-    private static int nextId = 1000;
+    private static int nextId = 1;
     protected int orderId;
     protected Product product;
     protected int quantity;
@@ -8,7 +8,7 @@ public class Order {
     protected boolean canceled = false;
 
     public Order(Product product, int quantity) {
-        this.orderId = ++nextId;
+        this.orderId = nextId++;
         this.product = product;
         this.quantity = quantity;
         this.totalPrice = product.getPrice() * quantity;

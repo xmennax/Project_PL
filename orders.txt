@@ -1,0 +1,2 @@
+orderId,productName,quantity,totalPrice,status
+1,Milk,2,40,Active

@@ -2,39 +2,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class InventoryEmployee extends Employee implements Arrays<Product>{
-    protected int id;
-    protected String password;
-    protected String type;
     protected ArrayList<Offers> offers = new ArrayList<>();
     protected ArrayList<Product> products = new ArrayList<>();
 
     InventoryEmployee(int id, String password) {
         super(id, password, "Inventory Employee");
-    }
-
-    @Override
-    public int getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public String getType() {
-        return type;
     }
 
     public Product searchProduct(int id){

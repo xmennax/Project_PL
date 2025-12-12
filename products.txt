@@ -1,0 +1,3 @@
+id,name,quantity,price,expiryDate
+1001,Milk,10,20,2025-12-31
+1002,Bread,50,5,2025-12-15

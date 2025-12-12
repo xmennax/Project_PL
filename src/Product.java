@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 
 public class Product {
-    private static int nextId=1;
+    private static int nextId=1000;
     protected int id;
     protected String name;
     protected int quantity;
@@ -11,7 +11,7 @@ public class Product {
 
 
     public Product(String name, int quantity, int price,LocalDate expiryDate) {
-        this.id = nextId++;
+        this.id = ++nextId;
         this.name = name;
         this.quantity = quantity;
         this.price=price;

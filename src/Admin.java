@@ -1,33 +1,15 @@
 import java.util.ArrayList;
 
 public class Admin extends User implements Arrays<Employee>{
-    private String username;
-    private String password;
     protected ArrayList<Employee> employees = new ArrayList<>();
 
     Admin(String username, String password) {
         super(username, password, "Admin");
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public void changeCredentials(String newUsername, String newPassword) {
-        this.username = newUsername;
-        this.password = newPassword;
+        setUsername(newUsername);
+        setPassword(newPassword);
     }
 
     @Override
